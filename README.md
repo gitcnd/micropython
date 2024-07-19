@@ -1,5 +1,17 @@
 [![Unix CI badge](https://github.com/micropython/micropython/actions/workflows/ports_unix.yml/badge.svg)](https://github.com/micropython/micropython/actions?query=branch%3Amaster+event%3Apush) [![STM32 CI badge](https://github.com/micropython/micropython/actions/workflows/ports_stm32.yml/badge.svg)](https://github.com/micropython/micropython/actions?query=branch%3Amaster+event%3Apush) [![Docs CI badge](https://github.com/micropython/micropython/actions/workflows/docs.yml/badge.svg)](https://docs.micropython.org/) [![codecov](https://codecov.io/gh/micropython/micropython/branch/master/graph/badge.svg?token=I92PfD05sD)](https://codecov.io/gh/micropython/micropython)
 
+A port of MicroPython with many more boards supported
+=====================================================
+
+This is a MicroPython fork/clone which is kept up-to-date with [micropython](https://github.com/micropython/micropython).
+
+The MicroPython maintainers do not typically allow new-board PRs, so their work is usually unusable or severely restricted unless you want to manually configure your own boards.
+
+This repo soilves that, by collecting all the new-board PRs and keeping them merged and working.  For example:-
+
+<img src="https://circuitpython.org/assets/images/boards/small/ai-thinker-esp32-cam.jpg" alt="Ai Thinker ESP32-Cam"/>
+
+
 The MicroPython project
 =======================
 <p align="center">
