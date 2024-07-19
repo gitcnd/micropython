@@ -9,7 +9,7 @@ The MicroPython maintainers do not typically allow new-board PRs, so their work 
 
 This repo soilves that, by collecting all the new-board PRs and keeping them merged and working.  For example:-
 
-<img src="https://circuitpython.org/assets/images/boards/small/ai-thinker-esp32-cam.jpg" alt="Ai Thinker ESP32-Cam"/>
+[![Ai Thinker ESP32-Cam](https://circuitpython.org/assets/images/boards/small/ai-thinker-esp32-cam.jpg)](https://github.com/gitcnd/micropython/tree/master/ports/esp32/boards/ESP32_CAM)
 
 
 The MicroPython project
