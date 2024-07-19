@@ -10,6 +10,9 @@
 build/
 build-*/
 docs/genrst/
+ports/esp32/build-*
+ports/esp32/firmware_mpy*
+steps.txt
 
 # Test failure outputs
 tests/results/*
