@@ -12,6 +12,12 @@
 #include "driver/i2s_std.h"
 #include "esp_wifi_types.h"
 
+
+// #define MICROPY_PY_OS_DUPTERM_BUILTIN_STREAM (1)
+
+#define MICROPY_USER_C_MODULES (1)
+
+
 #ifndef MICROPY_CONFIG_ROM_LEVEL
 #define MICROPY_CONFIG_ROM_LEVEL            (MICROPY_CONFIG_ROM_LEVEL_EXTRA_FEATURES)
 #endif
@@ -136,6 +142,8 @@
 #define MICROPY_PY_MACHINE_I2C_TRANSFER_WRITE1 (1)
 #define MICROPY_PY_MACHINE_SOFTI2C          (1)
 #define MICROPY_PY_MACHINE_SPI              (1)
+#define MICROPY_PY_MACHINE_SPI_MSB          (0)
+#define MICROPY_PY_MACHINE_SPI_LSB          (1)
 #define MICROPY_PY_MACHINE_SOFTSPI          (1)
 #ifndef MICROPY_PY_MACHINE_DAC
 #define MICROPY_PY_MACHINE_DAC              (SOC_DAC_SUPPORTED)
