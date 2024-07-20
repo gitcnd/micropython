@@ -31,6 +31,8 @@ CFLAGS += -DMICROPY_ENABLE_DYNRUNTIME
 CFLAGS += -DMP_CONFIGFILE='<$(CONFIG_H)>'
 CFLAGS += -fpic -fno-common
 CFLAGS += -U _FORTIFY_SOURCE # prevent use of __*_chk libc functions
+CFLAGS += -w  # Suppress all warnings
+#CFLAGS += -Wno-unused-value	# compilers cannot understand:  *xargv++;
 #CFLAGS += -fdata-sections -ffunction-sections
 
 MPY_CROSS_FLAGS += -march=$(ARCH)
