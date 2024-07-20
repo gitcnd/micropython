@@ -12,7 +12,12 @@ build-*/
 docs/genrst/
 ports/esp32/build-*
 ports/esp32/firmware_mpy*
+
 steps.txt
+examples/lrzsz
+examples/lrzsz_o
+examples/kermit
+examples/lrzsz-0.12.21rc.tar.gz
 
 # Test failure outputs
 tests/results/*
