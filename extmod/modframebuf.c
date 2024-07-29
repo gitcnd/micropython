@@ -340,6 +340,15 @@ static mp_int_t framebuf_get_buffer(mp_obj_t self_in, mp_buffer_info_t *bufinfo,
     return mp_get_buffer(self->buf_obj, bufinfo, flags) ? 0 : 1;
 }
 
+static mp_obj_t framebuf_swapwh(mp_obj_t self_in) { // cnd - this facilitates in-place rotation of 90 and 270 degrees.
+    mp_obj_framebuf_t *self = MP_OBJ_TO_PTR(self_in);
+    mp_int_t temp = self->width;
+    self->width = self->height;
+    self->height = temp;
+    return mp_const_none;
+}
+static MP_DEFINE_CONST_FUN_OBJ_1(framebuf_swapwh_obj, framebuf_swapwh);
+
 static mp_obj_t framebuf_fill(mp_obj_t self_in, mp_obj_t col_in) {
     mp_obj_framebuf_t *self = MP_OBJ_TO_PTR(self_in);
     mp_int_t col = mp_obj_get_int(col_in);
@@ -837,6 +846,7 @@ static MP_DEFINE_CONST_FUN_OBJ_VAR_BETWEEN(framebuf_text_obj, 4, 5, framebuf_tex
 #if !MICROPY_ENABLE_DYNRUNTIME
 static const mp_rom_map_elem_t framebuf_locals_dict_table[] = {
     { MP_ROM_QSTR(MP_QSTR_fill), MP_ROM_PTR(&framebuf_fill_obj) },
+    { MP_ROM_QSTR(MP_QSTR_swapwh), MP_ROM_PTR(&framebuf_swapwh_obj) },
     { MP_ROM_QSTR(MP_QSTR_fill_rect), MP_ROM_PTR(&framebuf_fill_rect_obj) },
     { MP_ROM_QSTR(MP_QSTR_pixel), MP_ROM_PTR(&framebuf_pixel_obj) },
     { MP_ROM_QSTR(MP_QSTR_hline), MP_ROM_PTR(&framebuf_hline_obj) },
