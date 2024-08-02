@@ -31,3 +31,5 @@ void NANO_ESP32_board_startup(void);
 
 #define MICROPY_BOARD_ENTER_BOOTLOADER(nargs, args)     NANO_ESP32_enter_bootloader()
 void NANO_ESP32_enter_bootloader(void);
+
+#define MICROPY_PY_DEFLATE_COMPRESS (1)

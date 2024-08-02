@@ -19,7 +19,8 @@
         "D2WD": "ESP32 D2WD",
         "SPIRAM": "Support for SPIRAM / WROVER",
         "UNICORE": "ESP32 Unicore",
-        "OTA": "Support for OTA"
+        "OTA": "Support for OTA",
+        "FAT": "Use fat32 instead of VFS_LFS2 file system"
     },
     "vendor": "Espressif"
 }

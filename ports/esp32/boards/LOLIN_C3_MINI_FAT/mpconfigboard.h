@@ -22,3 +22,5 @@
 #define MICROPY_FATFS_ENABLE_LFN (1)
 #define MICROPY_FATFS_RPATH    (2)
 #define MICROPY_FATFS_NORTC    (0) // Ensure RTC is enabled if timestamps are needed
+
+#define MICROPY_PY_DEFLATE_COMPRESS (1)

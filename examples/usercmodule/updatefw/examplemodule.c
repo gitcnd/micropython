@@ -106,6 +106,12 @@ static mp_obj_t example_cnd_reset_asm() {
     mp_int_t  reason = (mp_int_t)esp_reset_reason();
 
     asm volatile (
+        "addi %0, %0, 1\n"  // Add 1 to the value in the register corresponding to `reason`
+        : "+r"(reason)      // Output operand: `reason` is both an input and output
+    );
+
+    /*
+    asm volatile (
         "addi a1, a1, -16\n"    // Make space on the stack for 4 registers
         "s32i a2, a1, 0\n"      // Push a2
         "s32i a3, a1, 4\n"      // Push a3
@@ -123,6 +129,7 @@ static mp_obj_t example_cnd_reset_asm() {
  	
         : "+r"(reason)      // Output operand: `reason` is both an input and output
     );
+    */
 
     return mp_obj_new_int(reason);
 }
@@ -149,6 +156,7 @@ static mp_obj_t example_read_flash( mp_obj_t buffer_obj, mp_obj_t base_addr_obj,
 
 
 // This is a GPT-confused mess.  See https://www.espressif.com/sites/default/files/documentation/esp32-s2_technical_reference_manual_en.pdf?page=561 to fix it...
+/*
 
     asm volatile (
         "addi a1, a1, -4\n"           // Make space on the stack for 1 register
@@ -184,6 +192,7 @@ static mp_obj_t example_read_flash( mp_obj_t buffer_obj, mp_obj_t base_addr_obj,
         : "a11", "a12", "a13", "a14"
     );
 
+*/
 
 /*
 

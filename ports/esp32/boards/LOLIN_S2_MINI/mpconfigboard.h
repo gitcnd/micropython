@@ -11,3 +11,5 @@
 #define MICROPY_HW_SPI1_MOSI                (11)
 #define MICROPY_HW_SPI1_MISO                (9)
 #define MICROPY_HW_SPI1_SCK                 (7)
+
+#define MICROPY_PY_DEFLATE_COMPRESS (1)

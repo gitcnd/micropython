@@ -51,6 +51,11 @@
 
 */
 
+#include "esp_sleep.h" // for esp_sleep_get_wakeup_cause
+
+#include "soc/rtc_cntl_reg.h" // for WRITE_PERI_REG
+#include "soc/rtc_cntl_struct.h" // for RTC_CNTL_BROWN_OUT_REG
+
 
 
 
@@ -68,6 +73,36 @@ static mp_obj_t example_reset_reason() {
 }
 // Define a Python reference to the function above.
 static MP_DEFINE_CONST_FUN_OBJ_0(example_reset_reason_obj, example_reset_reason);
+
+
+static mp_obj_t example_wake_reason() {
+    mp_int_t  reason = (mp_int_t)esp_sleep_get_wakeup_cause();
+    return mp_obj_new_int(reason);
+    // case ESP_SLEEP_WAKEUP_UNDEFINED:    Serial.println("In case of deep sleep: reset was not caused by exit from deep sleep"); break;
+    // case ESP_SLEEP_WAKEUP_ALL:          Serial.println("Not a wakeup cause: used to disable all wakeup sources with esp_sleep_disable_wakeup_source"); break;
+    // case ESP_SLEEP_WAKEUP_EXT0:         Serial.println("Wakeup caused by external signal using RTC_IO"); break;
+    // case ESP_SLEEP_WAKEUP_EXT1:         Serial.println("Wakeup caused by external signal using RTC_CNTL"); break;
+    // case ESP_SLEEP_WAKEUP_TIMER:        Serial.println("Wakeup caused by timer"); break;
+    // case ESP_SLEEP_WAKEUP_TOUCHPAD:     Serial.println("Wakeup caused by touchpad"); break;
+    // case ESP_SLEEP_WAKEUP_ULP:          Serial.println("Wakeup caused by ULP program"); break;
+    // case ESP_SLEEP_WAKEUP_GPIO:         Serial.println("Wakeup caused by GPIO (light sleep only)"); break;
+    // case ESP_SLEEP_WAKEUP_UART:         Serial.println("Wakeup caused by UART (light sleep only)"); break;
+}
+static MP_DEFINE_CONST_FUN_OBJ_0(example_wake_reason_obj, example_wake_reason);
+
+
+static mp_obj_t example_brown_out_reg(mp_obj_t a_obj) {
+    int a = mp_obj_get_int(a_obj);
+    WRITE_PERI_REG(RTC_CNTL_BROWN_OUT_REG, a); //disable brownout detector   
+    return mp_obj_new_int(a);
+}
+static MP_DEFINE_CONST_FUN_OBJ_1(example_brown_out_reg_obj, example_brown_out_reg);
+
+
+
+
+
+
 
 /*
 // This is the function which will be called from Python as cnd.reset_reason(a, b).
@@ -108,7 +143,9 @@ static MP_DEFINE_CONST_FUN_OBJ_0(example_reset_reason_asm_obj, example_reset_rea
 // optimized to word-sized integers by the build system (interned strings).
 static const mp_rom_map_elem_t example_module_globals_table[] = {
     { MP_ROM_QSTR(MP_QSTR___name__), MP_ROM_QSTR(MP_QSTR_cnd) },
+    { MP_ROM_QSTR(MP_QSTR_brown_out_reg), MP_ROM_PTR(&example_brown_out_reg_obj) },
     { MP_ROM_QSTR(MP_QSTR_reset_reason), MP_ROM_PTR(&example_reset_reason_obj) },
+    { MP_ROM_QSTR(MP_QSTR_wake_reason), MP_ROM_PTR(&example_wake_reason_obj) },
 };
 static MP_DEFINE_CONST_DICT(example_module_globals, example_module_globals_table);
 
