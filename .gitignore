@@ -19,6 +19,8 @@ examples/lrzsz_o
 examples/kermit
 examples/lrzsz-0.12.21rc.tar.gz
 all_src.txt
+ports/esp-idf-v5.3/
+out
 
 # Test failure outputs
 tests/results/*
