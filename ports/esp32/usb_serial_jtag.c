@@ -98,9 +98,11 @@ void usb_serial_jtag_poll_rx(void) {
 void usb_serial_jtag_tx_strn(const char *str, size_t len) {
     while (len) {
         size_t l = len;
+/*
         if (l > USB_SERIAL_JTAG_PACKET_SZ_BYTES) {
             l = USB_SERIAL_JTAG_PACKET_SZ_BYTES;
         }
+*/
         TickType_t start_tick = xTaskGetTickCount();
         while (!usb_serial_jtag_ll_txfifo_writable()) {
             TickType_t now_tick = xTaskGetTickCount();
